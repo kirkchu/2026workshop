@@ -14,17 +14,12 @@
 
 ## Google Sheet 報名資料串接
 
-1. 開啟 [Google Apps Script](https://script.google.com/home) 並建立新專案。
-2. 將 `apps-script/Code.gs` 與 `apps-script/appsscript.json` 的內容貼到專案中。
-3. 點選「部署」→「新增部署作業」→「類型選擇 Web 應用程式」。
-4. 設定：
-   - 執行身份：我
-   - 可存取該應用程式的人員：所有人
-5. 部署並複製「網頁應用程式 URL」。
-6. 回到 `index.html`，將 `GAS_WEB_APP_URL` 的值替換為剛剛複製的 URL。
-7. 重新提交網站變更（`apps-script/` 與 `spec/` 資料夾不會被推到 GitHub Pages）。
+本專案已透過 `clasp` 自動建立並部署 Google Apps Script Web App，表單會將資料寫入名為 `2026workshop` 的 Google 試算表，第一列為標題列，「電話」欄位會以文字格式儲存。
 
-表單送出後，資料會寫入名為 `2026workshop` 的 Google 試算表，第一列為標題列，「電話」欄位會以文字格式儲存。
+- Apps Script 專案：https://script.google.com/d/1HLGchFuhjIfmfzyHaLF2ErfBmeP_Lxf6FdN-6YTlz_Or4MG53-9AgJn-/edit
+- Web App 網址：https://script.google.com/macros/s/AKfycbzrEHBRPhvvF77eC7h5yaINzKwRQlRzQ6zZ91iSXei_2Oz_vk2w6neyjws6yPLFDlk7/exec
+
+> 注意：部署後若首次開啟 Web App 出現「存取遭拒」，請以 `kirkchu@gmail.com` 帳號開啟 Apps Script 專案，確認權限設定為「任何人」均可存取，並重新授權執行。
 
 ## 專案結構
 
