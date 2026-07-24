@@ -17,9 +17,31 @@
 本專案已透過 `clasp` 自動建立並部署 Google Apps Script Web App，表單會將資料寫入名為 `2026workshop` 的 Google 試算表，第一列為標題列，「電話」欄位會以文字格式儲存。
 
 - Apps Script 專案：https://script.google.com/d/1HLGchFuhjIfmfzyHaLF2ErfBmeP_Lxf6FdN-6YTlz_Or4MG53-9AgJn-/edit
-- Web App 網址：https://script.google.com/macros/s/AKfycbzrEHBRPhvvF77eC7h5yaINzKwRQlRzQ6zZ91iSXei_2Oz_vk2w6neyjws6yPLFDlk7/exec
+- Web App 網址：https://script.google.com/macros/s/AKfycbxdVVUmmQclNzD-Gyq3hkCZsMdoJmzcPSeyGbA9GBVjxzG36cULBmv89CI7_gdgzsbc/exec
 
-> 注意：部署後若首次開啟 Web App 出現「存取遭拒」，請以 `kirkchu@gmail.com` 帳號開啟 Apps Script 專案，確認權限設定為「任何人」均可存取，並重新授權執行。
+### 為什麼表單目前無法寫入 Google Sheet？
+
+Google Apps Script 第一次執行時，**腳本擁有者（kirkchu@gmail.com）必須先授權**，否則對外 Web App 會回傳「存取遭拒」。這是 Google 的安全機制，無法透過程式自動完成。
+
+### 授權步驟
+
+1. 用 **kirkchu@gmail.com** 登入 Google。
+2. 開啟 Apps Script 專案：https://script.google.com/d/1HLGchFuhjIfmfzyHaLF2ErfBmeP_Lxf6FdN-6YTlz_Or4MG53-9AgJn-/edit
+3. 點選「執行」→ 執行 `doGet` 函式（或任意函式）。
+4. 畫面會跳出「Google 尚未驗證此應用程式」→ 點選「進階」→「前往 2026workshop（不安全）」→ 允許以下權限：
+   - 查看、編輯、建立及刪除您的所有 Google 試算表檔案
+   - 查看、編輯、建立及刪除您的所有 Google 雲端硬碟檔案
+5. 授權完成後，重新整理報名網頁再送一次表單。
+
+### 檢查 Web App 權限
+
+如果授權後仍無法存取，請在 Apps Script 編輯器中：
+1. 點選「部署」→「管理部署作業」。
+2. 找到目前的部署，點選右側「⏷」→「編輯」。
+3. 確認：
+   - **執行身份**：我
+   - **可存取該應用程式的人員**：所有人
+4. 點選「部署」儲存。
 
 ## 專案結構
 
