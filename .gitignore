@@ -8,3 +8,4 @@ Thumbs.db
 # 編輯器與相依
 node_modules/
 *.log
+apps-script
