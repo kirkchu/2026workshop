@@ -5,7 +5,7 @@
 ## GitHub Pages 網址
 
 <!-- PAGES_URL -->
-**網址：** `待啟用 GitHub Pages 後填入`
+**網址：** https://kirkchu.github.io/2026workshop/
 <!-- /PAGES_URL -->
 
 ## 本機預覽
