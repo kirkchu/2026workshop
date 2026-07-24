@@ -17,7 +17,7 @@
 本專案已透過 `clasp` 自動建立並部署 Google Apps Script Web App，表單會將資料寫入名為 `2026workshop` 的 Google 試算表，第一列為標題列，「電話」欄位會以文字格式儲存。
 
 - Apps Script 專案：https://script.google.com/d/1HLGchFuhjIfmfzyHaLF2ErfBmeP_Lxf6FdN-6YTlz_Or4MG53-9AgJn-/edit
-- Web App 網址：https://script.google.com/macros/s/AKfycbwvu550kwXLRI4933weIaRFvK6IPYW3mYZBJjm1n1o6L2k40226Wl49114-EXl2wQAD/exec
+- Web App 網址：https://script.google.com/macros/s/AKfycbyymFS38dtgQ1Jvv6vqjBeDQeeoXfCXoAT5rOuT-LXuZKbh_SUEYNHCdjv5mnhU-2c/exec
 
 ### 為什麼表單目前無法寫入 Google Sheet？
 
