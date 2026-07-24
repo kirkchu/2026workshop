@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 時間設計半日工作坊</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fff8e7;
+      --primary: #ff8c42;
+      --secondary: #ffd93d;
+      --accent: #6bcbef;
+      --text: #2c3e50;
+      --card-bg: #ffffff;
+      --radius: 1.25rem;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .row {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+    }
+
+    /* 活動標題 */
+    .title-row {
+      text-align: center;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+      color: #fff;
+    }
+
+    .title-row h1 {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .title-row p {
+      margin: 0.75rem 0 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      opacity: 0.95;
+    }
+
+    /* 活動圖片 */
+    .image-row {
+      padding: 0;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .image-row img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius);
+    }
+
+    /* 內容 + 報名表單 */
+    .split-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 2rem;
+      align-items: stretch;
+      padding: 2rem;
+    }
+
+    .block h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .block h2::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 1.5rem;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 2rem;
+      font-weight: 900;
+      opacity: 0.35;
+      user-select: none;
+    }
+
+    /* 活動內容時間表 */
+    .schedule-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .schedule-list li {
+      display: flex;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed #e0e0e0;
+    }
+
+    .schedule-list li:last-child {
+      border-bottom: none;
+    }
+
+    .time {
+      font-weight: 900;
+      color: var(--primary);
+      min-width: 4rem;
+    }
+
+    /* 表單 */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #ececec;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(107, 203, 239, 0.2);
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, var(--primary) 0%, #ff5e62 100%);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    button[type="submit"]:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 94, 98, 0.35);
+    }
+
+    button[type="submit"]:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .note {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: #888;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .split-row {
+        grid-template-columns: 1fr;
+      }
+
+      .divider {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- 第 1 列：活動標題 -->
+    <section class="row title-row">
+      <h1>2026 時間設計半日工作坊</h1>
+      <p>掌握時間，設計更有意義的一天</p>
+    </section>
+
+    <!-- 第 2 列：活動圖片 -->
+    <section class="row image-row">
+      <img src="cover.jpg" alt="2026 時間設計半日工作坊活動封面" />
+    </section>
+
+    <!-- 第 3 列：活動內容 | 報名表單 -->
+    <section class="row split-row">
+      <div class="block schedule-block">
+        <h2>活動內容</h2>
+        <ul class="schedule-list">
+          <li><span class="time">8:00</span><span>報到</span></li>
+          <li><span class="time">9:00</span><span>場次一</span></li>
+          <li><span class="time">10:00</span><span>break time</span></li>
+          <li><span class="time">10:30</span><span>場次二</span></li>
+          <li><span class="time">11:30</span><span>Q&A</span></li>
+          <li><span class="time">12:00</span><span>活動結束</span></li>
+        </ul>
+      </div>
+
+      <div class="divider" aria-hidden="true">|</div>
+
+      <div class="block form-block">
+        <h2>報名表單</h2>
+        <form id="registration-form" novalidate>
+          <div class="form-group">
+            <label for="name">姓名</label>
+            <input type="text" id="name" name="name" required placeholder="請輸入姓名" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="example@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">電話</label>
+            <input type="tel" id="phone" name="phone" inputmode="tel" pattern="[0-9+\-\s]*" required placeholder="請輸入電話" />
+          </div>
+
+          <div class="form-group">
+            <label for="org">單位</label>
+            <input type="text" id="org" name="org" required placeholder="請輸入單位" />
+          </div>
+
+          <div class="form-group">
+            <label for="title">職稱</label>
+            <input type="text" id="title" name="title" required placeholder="請輸入職稱" />
+          </div>
+
+          <button type="submit">送出報名</button>
+          <p class="note">送出後資料將寫入 Google Sheet「2026workshop」</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // TODO: 部署 Google Apps Script Web App 後，將網址貼到下方
+    const GAS_WEB_APP_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+
+    const form = document.getElementById("registration-form");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (GAS_WEB_APP_URL.startsWith("YOUR_")) {
+        alert("請先設定 Google Apps Script Web App 網址");
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "送出中…";
+
+      try {
+        const params = new URLSearchParams(new FormData(form));
+        const response = await fetch(GAS_WEB_APP_URL, {
+          method: "POST",
+          body: params,
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert("報名成功！我們已收到您的資料");
+          form.reset();
+        } else {
+          alert("報名失敗：" + (result.message || "請稍後再試"));
+        }
+      } catch (error) {
+        alert("傳送失敗，請稍後再試：" + error.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  </script>
+</body>
+</html>

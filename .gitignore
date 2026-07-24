@@ -1,0 +1,10 @@
+# 規格文件不進版控
+spec/
+
+# 系統檔案
+.DS_Store
+Thumbs.db
+
+# 編輯器與相依
+node_modules/
+*.log
